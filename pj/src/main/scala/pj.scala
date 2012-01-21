@@ -1,6 +1,6 @@
 package pj
 
-object PJ {
+object Printer {
   import java.io.{ InputStream => IN, OutputStream => OUT,
                   Reader, Writer, StringWriter }
   import org.codehaus.jackson.{
@@ -8,6 +8,7 @@ object PJ {
     JsonParseException }
   import org.codehaus.jackson.util.DefaultPrettyPrinter
 
+  /** Prints formated json from a String */
   def apply(in: String): Either[String, String]  =
     factory { f =>
       val writer = new StringWriter
@@ -16,25 +17,27 @@ object PJ {
       }
     }
 
-  def apply(in: Reader, out: Writer): Either[String, Unit] =
+  /** Reads json from reader, printing formated json to writer */
+  def apply(in: Reader, out: Writer): Option[String] =
     factory { f =>
       pretty(f.createJsonParser(in), f.createJsonGenerator(out)) {
         ()
-      }
+      }.fold({ Some(_)}, { u => None })
     }
 
-  def apply(in: IN, out: OUT): Either[String, Unit] =
+  /** Reads json from input stream, writing formatted json to output stream */
+  def apply(in: IN, out: OUT): Option[String] =
     factory { f =>
       pretty(f.createJsonParser(in), f.createJsonGenerator(out)) {
         ()
-      }
+      }.fold({ Some(_) }, { u => None })
     }
 
   private def pretty[T](
     parser: JsonParser, gen: JsonGenerator)(
     f: => T): Either[String, T] =
     try {
-      parser.nextToken
+      parser.nextToken // one step forward
       gen.setPrettyPrinter(new DefaultPrettyPrinter)
       gen.copyCurrentStructure(parser)
       gen.flush
