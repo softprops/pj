@@ -82,6 +82,8 @@ object App {
           a.right.map(_.copy(out = Some(new File(o))))
         case Seq("-h" | "--help") =>
           a.right.map(_.copy(help = true))
+        case _ =>
+          a.right.map(_.copy(help = true))
       }
     }).fold({ s =>
       s
