@@ -1,6 +1,6 @@
 organization := "me.lessis"
 
-name := "app"
+name := "pj-app"
 
 version := "0.1.0-SNAPSHOT"
 
