@@ -5,9 +5,17 @@ object App {
     val exit = run(args)
     System.exit(exit)
   }
+
   def run(args: Array[String]): Int = {
-    println("parse it!")
-    0
+    if(System.in.available > 0) {
+      PJ(System.in, System.out).fold({ e =>
+        Console.err.println(e)
+        1
+      }, { u: Unit => 0 })
+    } else {
+      println("todo...")
+      0
+    }
   }
 }
 
