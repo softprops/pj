@@ -2,7 +2,7 @@ package pj
 
 object App {
   import java.io.{ File, InputStream, OutputStream,
-                  FileReader, FileWriter, StringReader, StringWriter }
+                  FileReader, FileWriter, StringReader, PrintWriter }
   val Help = """
   |    pj - a pretty printer for json
   | 
@@ -71,7 +71,7 @@ object App {
   private def argumented(args: Seq[String]): Int = {
     (((Right(Arguments()): Either[Int, Arguments])) /: args.grouped(2))((a, e) => {
       e match {
-        case Seq("-f" | "--f", f) =>
+        case Seq("-f" | "--file", f) =>
           new File(f) match {
             case ne if(!ne.exists) => Left(1)
             case de => a.right.map(_.copy(in = Some(de)))
@@ -94,7 +94,7 @@ object App {
             case Some(out) =>
               passOrFail(Printer(new FileReader(in), new FileWriter(out)))
             case _ =>
-              passOrFail(Printer(new FileReader(in), new StringWriter))
+              passOrFail(Printer(new FileReader(in), new PrintWriter(System.out)))
           }
         case Arguments(_, Some(out), Some(json), _) =>
           passOrFail(Printer(new StringReader(json), new FileWriter(out)))
