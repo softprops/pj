@@ -2,7 +2,7 @@ organization := "me.lessis"
 
 name := "pj-app"
 
-version := "0.1.0-SNAPSHOT"
+version := "0.1.0"
 
 seq(conscript.Harness.conscriptSettings: _*)
 
