@@ -2,7 +2,7 @@
 {
  "organization":"me.lessis",
  "name":"pj",
- "version":"0.1.0-SNAPSHOT",
+ "version":"0.1.0",
  "description":"A pretty printer for json",
  "site":"https://github.com/softprops/pj#readme",
  "tags":["json"],
