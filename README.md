@@ -19,7 +19,7 @@ Formatting piped data with curl (discarding stderr), use empty `--` flag
       "tea_time": true
     }
     
-Formatting json file and writing to anoter file.
+Formatting json from file and writing to another.
 
     pj -f path/to/in.json -o path/to/out.json
     
