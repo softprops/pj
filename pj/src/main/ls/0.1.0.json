@@ -1,0 +1,22 @@
+
+{
+ "organization":"me.lessis",
+ "name":"pj",
+ "version":"0.1.0-SNAPSHOT",
+ "description":"A pretty printer for json",
+ "site":"https://github.com/softprops/pj#readme",
+ "tags":["json"],
+ "docs":"",
+ "licenses": [{
+   "name": "MIT",
+   "url": "https://github.com/softprops/pj/blob/master/LICENSE"
+  }],
+ "resolvers": ["http://scala-tools.org/repo-releases"],
+ "dependencies": [{
+   "organization":"org.codehaus.jackson",
+   "name": "jackson-core-asl",
+   "version": "1.9.0"
+  }],
+ "scalas": ["2.9.1"],
+ "sbt": false
+}

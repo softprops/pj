@@ -1,0 +1,6 @@
+* provides simple library and conscript interfaces for pretty printing json
+* see the project [readme][readme] for more info
+
+    curl 'https://api.twitter.com/1/statuses/public_timeline.json' 2>/dev/null | pj --
+
+[readme]: https://github.com/softprops/pj#readme
