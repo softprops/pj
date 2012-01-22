@@ -8,7 +8,7 @@ Makes json all pretty-like.
 
 Installation requires [conscript][cs]
 
-    cs softprops/np
+    cs softprops/pj
     
 ### usage
 
@@ -58,6 +58,6 @@ Install by hand
 
 Doug Tangren (softprops) 2012
 
-[cs]: https://github.com/n8han/conscript
+[cs]: https://github.com/n8han/conscript#readme
 [ls]: http://ls.implicit.ly/
 
