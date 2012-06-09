@@ -2,7 +2,7 @@ object Build extends sbt.Build {
   import sbt._
   import sbt.Keys._
 
-  def commonSettings: Seq[Project.Setting[_]] = Seq(
+  def commonSettings: Seq[Project.Setting[_]] = Defaults.defaultSettings ++ Seq(
     publishTo :=
       Some("nexus-releases" at
            "https://oss.sonatype.org/service/local/staging/deploy/maven2"),
@@ -30,9 +30,8 @@ object Build extends sbt.Build {
 
   lazy val root = Project(
     "root", file("."),
-    settings = Defaults.defaultSettings ++
-      commonSettings)
+    settings = Defaults.defaultSettings)
       .aggregate(pj, app)
-  lazy val pj = Project("pj", file("pj"))
-  lazy val app = Project("app", file("app")) dependsOn(pj)
+  lazy val pj = Project("pj", file("pj"), settings = commonSettings)
+  lazy val app = Project("app", file("app"), settings = commonSettings) dependsOn(pj)
 }
