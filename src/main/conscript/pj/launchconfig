@@ -4,8 +4,8 @@
   name: pj-app
   class: pj.App
 [scala]
-  version: 2.9.1
+  version: 2.9.2
 [repositories]
   local
-  sonatype-releases: https://oss.sonatype.org/service/local/repositories/releases/content/
   maven-central
+  sonatype-releases: https://oss.sonatype.org/content/repositories/releases/
