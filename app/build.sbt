@@ -4,8 +4,11 @@ name := "pj-app"
 
 version := "0.1.0"
 
-seq(conscript.Harness.conscriptSettings: _*)
+resolvers += Classpaths.typesafeResolver
 
-publishTo := Some("Scala Tools Nexus" at "http://nexus.scala-tools.org/content/repositories/releases/")
+libraryDependencies <+= (sbtVersion)(
+  "org.scala-sbt" %
+   "launcher-interface" %
+    _ % "provided")
 
-credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+description := "A conscript interface for prettifying json strings and streams"
