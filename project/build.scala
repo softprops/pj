@@ -30,7 +30,12 @@ object Build extends sbt.Build {
 
   lazy val root = Project(
     "root", file("."),
-    settings = Defaults.defaultSettings)
+    settings = Defaults.defaultSettings ++ Seq(
+      test := { }, // no tests
+      publish := { }, // skip publishing for this root project.
+      publishLocal := { } // skip publishing locally,
+      //ls.Plugin.LsKeys.skipWrite := true // don't track root in ls
+    ))
       .aggregate(pj, app)
   lazy val pj = Project("pj", file("pj"), settings = commonSettings)
   lazy val app = Project("app", file("app"), settings = commonSettings) dependsOn(pj)
