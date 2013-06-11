@@ -2,7 +2,7 @@ name := "pj"
 
 scalacOptions += "-deprecation"
 
-crossScalaVersions := Seq("2.9.1", "2.9.1-1", "2.9.2")
+crossScalaVersions := Seq("2.9.1", "2.9.1-1", "2.9.2", "2.10.0")
 
 libraryDependencies += "org.codehaus.jackson" % "jackson-core-asl" % "1.9.0"
 
